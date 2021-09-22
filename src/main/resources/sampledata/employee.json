@@ -1,0 +1,10 @@
+{
+  "id": "1194",
+  "name": "Jack",
+  "surname": "Bauer",
+  "address": "Westwood, CA 96137, Los Angeles",
+  "phone": "1133445566",
+  "email": "jack@24.com",
+  "dateHired": "01/01/2001",
+  "isActiveEmployee": true
+}

@@ -41,7 +41,7 @@ public class StoreService {
         if (storeRepository.findById(storeId).isPresent()) {
             Store storeUpdated = Store.builder()
                     .id(storeId)
-                    .storeName(store.getStoreName())
+                    .name(store.getName())
                     .address(store.getAddress())
                     .build();
             storeRepository.save(storeUpdated);

@@ -18,6 +18,6 @@ public class Store {
 
     @Id
     private String id;
-    private String storeName;
+    private String name;
     private String address;
 }
