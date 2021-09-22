@@ -9,9 +9,16 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <java.version>15</java.version>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+        <skipTests>true</skipTests>
         <spring-web-version>5.3.10</spring-web-version>
         <springboot-web-starter-version>2.5.4</springboot-web-starter-version>
         <springboot-starter-test-version>2.5.4</springboot-starter-test-version>
+        <spring-data-jpa-version>2.5.5</spring-data-jpa-version>
+        <springboot-starter-jpa-version>2.5.4</springboot-starter-jpa-version>
+        <h2-version>1.4.200</h2-version>
         <commons-io-version>2.7</commons-io-version>
         <openapi-doc-version>1.5.10</openapi-doc-version>
         <swagger-annotations-version>2.1.10</swagger-annotations-version>
@@ -69,6 +76,22 @@
             <version>${lombok-version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${springboot-starter-jpa-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+            <version>${h2-version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -76,6 +99,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>15</source>
+                    <target>15</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
