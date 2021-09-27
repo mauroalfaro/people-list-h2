@@ -1,8 +1,7 @@
 package com.alfarosoft.peoplelist.service;
 
-import com.alfarosoft.peoplelist.model.Customer;
 import com.alfarosoft.peoplelist.model.Employee;
-import com.alfarosoft.peoplelist.repository.CustomerRepository;
+import com.alfarosoft.peoplelist.model.patch.EmployeePatch;
 import com.alfarosoft.peoplelist.repository.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +50,18 @@ public class EmployeeService {
                     .isActiveEmployee(employee.isActiveEmployee())
                     .build();
             employeeRepository.save(employeeUpdated);
+        }
+    }
+
+    public void patchEmployeeById (String employeeId, EmployeePatch employeePatch) {
+        if (employeeRepository.findById(employeeId).isPresent()) {
+            Employee employeePatched = Employee.builder()
+                    .id(employeeId)
+                    .address(employeePatch.getAddress())
+                    .phone(employeePatch.getPhone())
+                    .email(employeePatch.getEmail())
+                    .build();
+            employeeRepository.save(employeePatched);
         }
     }
 }

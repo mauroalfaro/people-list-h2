@@ -1,7 +1,7 @@
 package com.alfarosoft.peoplelist.service;
 
 import com.alfarosoft.peoplelist.model.Customer;
-import com.alfarosoft.peoplelist.model.Store;
+import com.alfarosoft.peoplelist.model.patch.CustomerPatch;
 import com.alfarosoft.peoplelist.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +49,18 @@ public class CustomerService {
                     .email(customer.getEmail())
                     .build();
             customerRepository.save(customerUpdated);
+        }
+    }
+
+    public void patchCustomerById (String customerId, CustomerPatch customerPatch) {
+        if (customerRepository.findById(customerId).isPresent()) {
+            Customer customerPatched = Customer.builder()
+                    .id(customerId)
+                    .address(customerPatch.getAddress())
+                    .phone(customerPatch.getPhone())
+                    .email(customerPatch.getEmail())
+                    .build();
+            customerRepository.save(customerPatched);
         }
     }
 

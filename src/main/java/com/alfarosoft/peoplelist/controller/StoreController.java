@@ -1,6 +1,7 @@
 package com.alfarosoft.peoplelist.controller;
 
 import com.alfarosoft.peoplelist.model.Store;
+import com.alfarosoft.peoplelist.model.patch.StorePatch;
 import com.alfarosoft.peoplelist.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,12 @@ public class StoreController {
     public ResponseEntity<?> updateStore (@PathVariable String id, @RequestBody Store store){
         storeService.updateStoreById(id, store);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> patchStore (@PathVariable String id, @RequestBody StorePatch storePatch) {
+        storeService.patchStoreById(id, storePatch);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping(value = "/{id}")

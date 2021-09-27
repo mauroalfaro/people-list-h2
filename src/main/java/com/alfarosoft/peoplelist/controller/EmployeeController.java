@@ -1,6 +1,7 @@
 package com.alfarosoft.peoplelist.controller;
 
 import com.alfarosoft.peoplelist.model.Employee;
+import com.alfarosoft.peoplelist.model.patch.EmployeePatch;
 import com.alfarosoft.peoplelist.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,12 @@ public class EmployeeController {
     public ResponseEntity<?> updateEmployee (@PathVariable String id, @RequestBody Employee employee){
         employeeService.updateEmployeeById(id, employee);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> patchEmployee (@PathVariable String id, @RequestBody EmployeePatch employeePatch) {
+        employeeService.patchEmployeeById(id, employeePatch);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping(value = "/{id}")

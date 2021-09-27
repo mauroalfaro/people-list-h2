@@ -1,8 +1,7 @@
 package com.alfarosoft.peoplelist.service;
 
-import com.alfarosoft.peoplelist.model.Employee;
 import com.alfarosoft.peoplelist.model.Store;
-import com.alfarosoft.peoplelist.repository.EmployeeRepository;
+import com.alfarosoft.peoplelist.model.patch.StorePatch;
 import com.alfarosoft.peoplelist.repository.StoreRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +44,16 @@ public class StoreService {
                     .address(store.getAddress())
                     .build();
             storeRepository.save(storeUpdated);
+        }
+    }
+
+    public void patchStoreById (String storeId, StorePatch storePatch) {
+        if (storeRepository.findById(storeId).isPresent()) {
+            Store storePatched = Store.builder()
+                    .id(storeId)
+                    .address(storePatch.getAddress())
+                    .build();
+            storeRepository.save(storePatched);
         }
     }
 }

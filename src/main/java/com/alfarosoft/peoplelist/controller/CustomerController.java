@@ -1,6 +1,7 @@
 package com.alfarosoft.peoplelist.controller;
 
 import com.alfarosoft.peoplelist.model.Customer;
+import com.alfarosoft.peoplelist.model.patch.CustomerPatch;
 import com.alfarosoft.peoplelist.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,12 @@ public class CustomerController {
     public ResponseEntity<?> updateCustomer (@PathVariable String id, @RequestBody Customer customer){
         customerService.updateCustomerbyId(id, customer);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> patchCustomer (@PathVariable String id, @RequestBody CustomerPatch customerPatch) {
+        customerService.patchCustomerById(id, customerPatch);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping(value = "/{id}")
