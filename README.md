@@ -38,7 +38,9 @@ Credentials can be found on the [application.properties](https://github.com/maur
 Property spring.datasource.initialization-mode is set to always, so everytime you restart the app the DB will be swiped. Change this property if you want to keep your info after stopping the application.
 
 The API provides endpoints for the three models available: Customers, Employees and Stores. Providing CRUD operations. 
+
 You can check the Swagger UI for documentation about these endpoints and model examples hitting http://localhost:8080/swagger-ui.html
+
 Go to http://localhost:8080/v3/api-docs/ to check the entire OpenApi documentation.
 
 
