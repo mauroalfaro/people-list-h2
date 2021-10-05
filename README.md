@@ -35,7 +35,7 @@ This will start the Spring Boot app and H2 database. You can test the connection
 
 Credentials can be found on the [application.properties](https://github.com/mauroalfaro/people-list-h2/blob/main/src/main/resources/application.properties)  file. You can change username and password (and also console url) if you want to.
 
-Property ```bashspring.datasource.initialization-mode``` is set to always, so everytime you restart the app the DB will be swiped. Change this property if you want to keep your info after stopping the application.
+Property ```spring.datasource.initialization-mode``` is set to always, so everytime you restart the app the DB will be swiped. Change this property if you want to keep your info after stopping the application.
 
 The API provides endpoints for the three models available: Customers, Employees and Stores. Providing CRUD operations. 
 
